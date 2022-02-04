@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - master # Default release branch
+    paths:
+      - 'src/MayoSolutions.Storage.Local/MayoSolutions.Storage.Local.csproj'
 jobs:
   publish:
     name: build, pack & publish
