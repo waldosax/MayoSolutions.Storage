@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	  <UserSecretsId>c469c2ab-4382-4e09-9aaa-04b627e506a4</UserSecretsId>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <Company>Mayo Solutions</Company>
+	  <Authors>Rob Mayo</Authors>
+	  <Description>Interface for enumerating Google Cloud Storage buckets</Description>
+	  <PackageTags>Google Cloud</PackageTags>
+	  <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Cloud.Storage.V1" Version="3.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MayoSolutions.Storage\MayoSolutions.Storage.csproj" />
+  </ItemGroup>
+
+</Project>

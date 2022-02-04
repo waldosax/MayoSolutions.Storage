@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <Company>Mayo Solutions</Company>
+	  <Authors>Rob Mayo</Authors>
+	  <Description>Interface for enumerating Amazon Web Services S3 buckets</Description>
+	  <PackageTags>Storage AWS S3</PackageTags>
+	  <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.S3" Version="3.7.7.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MayoSolutions.Storage\MayoSolutions.Storage.csproj" />
+  </ItemGroup>
+
+</Project>
