@@ -8,7 +8,7 @@
 	  <Authors>Rob Mayo</Authors>
 	  <Description>Interface for enumerating Google Cloud Storage buckets</Description>
 	  <PackageTags>Google Cloud</PackageTags>
-	  <Version>0.0.0.1</Version>
+	  <Version>0.0.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

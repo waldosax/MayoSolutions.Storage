@@ -34,5 +34,8 @@ namespace MayoSolutions.Storage.Google
 
         [JsonProperty("client_x509_cert_url")]
         public string ClientX509CertUrl { get; set; }
+
+        [JsonIgnore]
+        public int? PageSize { get; set; }
     }
 }

@@ -2,29 +2,34 @@
 
 namespace MayoSolutions.Storage.AWS.S3
 {
-    internal class S3ObjectFileWrapper : IFile
+    internal class S3FolderShim : IFolder
     {
         public string Name { get; protected set; }
         public string Path { get; protected set; }
-        public long? Size { get; protected set; }
 
-        public S3ObjectFileWrapper(
+        public S3FolderShim(
             string path,
-            S3Object fileObject
-            )
+            string name
+        )
         {
             Path = path;
-            Name = fileObject.Key;
-            Size = fileObject.Size;
+            Name = name;
         }
-        public S3ObjectFileWrapper(
+        public S3FolderShim(
+            string path,
+            S3Object folderObject
+        )
+        {
+            Path = path;
+            Name = folderObject.Key;
+        }
+        public S3FolderShim(
             string path,
             GetObjectResponse response
-            )
+        )
         {
             Path = path;
             Name = response.Key;
-            Size = null; // TODO: Size from a response
         }
     }
 }

@@ -1,23 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31005.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MayoSolutions.Storage", "src\MayoSolutions.Storage\MayoSolutions.Storage.csproj", "{0167E3AE-5CE0-4920-9121-668566CEBFDF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1947F80C-FABF-4A52-AD8A-C74906382D5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayoSolutions.Storage.Google", "src\MayoSolutions.Storage.Google\MayoSolutions.Storage.Google.csproj", "{244F7277-9DB3-4E61-BAC0-64BE8AF40CC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MayoSolutions.Storage.Google", "src\MayoSolutions.Storage.Google\MayoSolutions.Storage.Google.csproj", "{244F7277-9DB3-4E61-BAC0-64BE8AF40CC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayoSolutions.Storage.Local", "src\MayoSolutions.Storage.Local\MayoSolutions.Storage.Local.csproj", "{9BD30811-D6D0-4B9E-A5B4-1B8465EE66F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MayoSolutions.Storage.Local", "src\MayoSolutions.Storage.Local\MayoSolutions.Storage.Local.csproj", "{9BD30811-D6D0-4B9E-A5B4-1B8465EE66F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9937C36F-BBE7-4300-9AD7-136CEE34542A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{335DEDE3-4618-4675-96EA-36DA6BC23209}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlexSportsNetAssets", "samples\PlexSportsNetAssets\PlexSportsNetAssets.csproj", "{8C1C871B-3554-40AB-A58F-0068E9F014EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlexSportsNetAssets", "samples\PlexSportsNetAssets\PlexSportsNetAssets.csproj", "{8C1C871B-3554-40AB-A58F-0068E9F014EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayoSolutions.Storage.AWS.S3", "src\MayoSolutions.Storage.AWS.S3\MayoSolutions.Storage.AWS.S3.csproj", "{979438E9-8E91-4F91-86F7-3659D9FF285B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MayoSolutions.Storage.AWS.S3", "src\MayoSolutions.Storage.AWS.S3\MayoSolutions.Storage.AWS.S3.csproj", "{979438E9-8E91-4F91-86F7-3659D9FF285B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.BenchTests", "tests\Storage.BenchTests\Storage.BenchTests.csproj", "{02486EEF-DE52-43B0-A66F-6BCE63BA5757}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{979438E9-8E91-4F91-86F7-3659D9FF285B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{979438E9-8E91-4F91-86F7-3659D9FF285B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{979438E9-8E91-4F91-86F7-3659D9FF285B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02486EEF-DE52-43B0-A66F-6BCE63BA5757}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02486EEF-DE52-43B0-A66F-6BCE63BA5757}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02486EEF-DE52-43B0-A66F-6BCE63BA5757}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02486EEF-DE52-43B0-A66F-6BCE63BA5757}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{9BD30811-D6D0-4B9E-A5B4-1B8465EE66F6} = {1947F80C-FABF-4A52-AD8A-C74906382D5C}
 		{8C1C871B-3554-40AB-A58F-0068E9F014EB} = {335DEDE3-4618-4675-96EA-36DA6BC23209}
 		{979438E9-8E91-4F91-86F7-3659D9FF285B} = {1947F80C-FABF-4A52-AD8A-C74906382D5C}
+		{02486EEF-DE52-43B0-A66F-6BCE63BA5757} = {9937C36F-BBE7-4300-9AD7-136CEE34542A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C84C7313-4265-421E-9126-4B87166C0373}

@@ -2,8 +2,7 @@
 {
     public interface IStorageItem
     {
-        string BucketName { get; }
-        string Identifier { get; }
         string Name { get; }
+        string Path { get; }
     }
 }

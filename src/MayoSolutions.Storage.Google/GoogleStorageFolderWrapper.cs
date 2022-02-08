@@ -1,22 +1,24 @@
-﻿using Google.Apis.Storage.v1.Data;
-using Google.Cloud.Storage.V1;
+﻿using System.Diagnostics;
+using System.Linq;
+using Google.Apis.Storage.v1.Data;
 
 namespace MayoSolutions.Storage.Google
 {
-    internal class GoogleStorageFolderWrapper : GoogleStorageClientWrapper, IFolder
+    [DebuggerDisplay(nameof(Name) + ": {" + nameof(Name) + ",nq}, " + nameof(Path) + ": {" + nameof(Path) + ",nq}")]
+    internal class GoogleStorageFolderWrapper : IFolder
     {
         public Object FolderObject { get; }
 
-        public string Identifier => FolderObject.Id;
+        //public string Identifier => FolderObject.Id;
+        public string Path { get; protected set; }
         public string Name => FolderObject.Name;
 
         public GoogleStorageFolderWrapper(
-            StorageClient client, 
-            Bucket bucket, 
+            string path,
             Object folderObject
         )
-            : base(client, bucket, folderObject.Name) // TODO: Is this just the top-level name or the relative multi-level path?
         {
+            Path = path;
             FolderObject = folderObject;
         }
     }

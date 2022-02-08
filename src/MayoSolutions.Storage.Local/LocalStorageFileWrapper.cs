@@ -1,22 +1,23 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 
 namespace MayoSolutions.Storage.Local
 {
+    [DebuggerDisplay(nameof(Name) + ": {" + nameof(Name) + ",nq}, " + nameof(Path) + ": {" + nameof(Path) + ",nq}")]
     internal class LocalStorageFileWrapper : IFile
     {
         public string FullPath { get; protected set; }
-        public string BucketName { get; }
-        public string Identifier => FullPath;
+        public string Path { get; protected set; }
         public string Name => new FileInfo(FullPath).Name;
         public long? Size => new FileInfo(FullPath).Length;
 
         public LocalStorageFileWrapper(
             string fullPath,
-            string bucketName
+            string path
         )
         {
             FullPath = fullPath;
-            BucketName = bucketName;
+            Path = path;
         }
 
     }
