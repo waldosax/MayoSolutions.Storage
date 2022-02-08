@@ -1,3 +1,4 @@
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using MayoSolutions.Storage;
@@ -45,7 +46,17 @@ namespace Storage.BenchTests
             var bucketName = ctx.Configuration.GetValue<string>($"{ConfigKey}:BucketIdentifier");
             
             var childFolders = await client.GetFoldersAsync(bucketName, "", cancellationToken);
-
+            var files = await client.GetFilesAsync(bucketName, "team-logos/NHL/winnipeg-jets", cancellationToken);
+            var file = await client.GetFileAsync(bucketName, "posters/NBA/2021/nba-poster-2021.png", cancellationToken);
+            using (var ms = new MemoryStream())
+            {
+                await client.DownloadObjectAsync(bucketName, file.Path, ms, cancellationToken);
+                ms.Position = 0L;
+                var signature = new byte[4];
+                await ms.ReadAsync(signature, 0, 4, cancellationToken);
+                var pngSig = new byte[] { 0x89, 0x50, 0x4e, 0x47 };
+                Assert.That(signature, Is.EqualTo(pngSig));
+            }
         }
 
         [Test]
@@ -60,7 +71,16 @@ namespace Storage.BenchTests
             
             var childFolders = await client.GetFoldersAsync(bucketName, "", cancellationToken);
             var files = await client.GetFilesAsync(bucketName, "team-logos/NHL/winnipeg-jets", cancellationToken);
-
+            var file = await client.GetFileAsync(bucketName, "posters/NBA/2021/nba-poster-2021.png", cancellationToken);
+            using (var ms = new MemoryStream())
+            {
+                await client.DownloadObjectAsync(bucketName, file.Path, ms, cancellationToken);
+                ms.Position = 0L;
+                var signature = new byte[4];
+                await ms.ReadAsync(signature, 0, 4, cancellationToken);
+                var pngSig = new byte[] { 0x89, 0x50, 0x4e, 0x47 };
+                Assert.That(signature, Is.EqualTo(pngSig));
+            }
         }
 
         [Test]
@@ -75,7 +95,16 @@ namespace Storage.BenchTests
             
             var childFolders = await client.GetFoldersAsync(bucketName, "", cancellationToken);
             var files = await client.GetFilesAsync(bucketName, "team-logos/NHL/winnipeg-jets", cancellationToken);
-
+            var file = await client.GetFileAsync(bucketName, "posters/NBA/2021/nba-poster-2021.png", cancellationToken);
+            using (var ms = new MemoryStream())
+            {
+                await client.DownloadObjectAsync(bucketName, file.Path, ms, cancellationToken);
+                ms.Position = 0L;
+                var signature = new byte[4];
+                await ms.ReadAsync(signature, 0, 4, cancellationToken);
+                var pngSig = new byte[] { 0x89, 0x50, 0x4e, 0x47 };
+                Assert.That(signature, Is.EqualTo(pngSig));
+            }
         }
     }
 }

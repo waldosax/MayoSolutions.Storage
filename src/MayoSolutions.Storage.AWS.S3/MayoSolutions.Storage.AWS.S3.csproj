@@ -7,7 +7,7 @@
 	  <Authors>Rob Mayo</Authors>
 	  <Description>Interface for enumerating Amazon Web Services S3 buckets</Description>
 	  <PackageTags>Storage AWS S3</PackageTags>
-	  <Version>0.0.0.3</Version>
+	  <Version>0.0.0.4</Version>
   </PropertyGroup>
 
   <ItemGroup>

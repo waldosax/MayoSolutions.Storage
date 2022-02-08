@@ -11,7 +11,7 @@ namespace MayoSolutions.Storage.Local
 
         public static string SanitizeLocalPath(this string path)
         {
-            return path.Replace('/', Path.PathSeparator).TrimEnd('\\', '/');
+            return path.Replace('/', Path.DirectorySeparatorChar).TrimEnd('\\', '/');
         }
     }
 }

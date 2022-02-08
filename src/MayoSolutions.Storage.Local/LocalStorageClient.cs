@@ -70,7 +70,10 @@ namespace MayoSolutions.Storage.Local
             var fullPath = Path.Combine(_config.StoragePath, bucketName, path.SanitizeLocalPath());
             if (File.Exists(fullPath))
                 using (var fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
+                {
                     await fs.CopyToAsync(downloadInto, 1024, cancellationToken);
+                    return;
+                }
 
             throw new IOException("File {cleanPath} not found.");
         }
