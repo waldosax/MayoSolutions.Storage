@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Google.Apis.Auth.OAuth2;
@@ -101,6 +102,17 @@ namespace MayoSolutions.Storage.Google
             }
 
             return items.ToArray();
+        }
+
+        public async Task DownloadObjectAsync(
+            string bucketName, string path,
+            Stream downloadInto,
+            CancellationToken cancellationToken = default)
+        {
+            await EnsureStorageClient();
+
+            DownloadObjectOptions options = null;
+            await _storageClient.DownloadObjectAsync(bucketName, path, downloadInto, options, cancellationToken);
         }
     }
 }

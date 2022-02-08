@@ -20,5 +20,6 @@ namespace MayoSolutions.Storage.Google
         {
             FileObject = fileObject;
         }
+        
     }
 }

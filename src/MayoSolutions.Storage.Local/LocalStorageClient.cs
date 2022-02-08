@@ -18,7 +18,7 @@ namespace MayoSolutions.Storage.Local
         {
             _config = config ?? throw new ArgumentNullException(nameof(config));
         }
-        
+
 
         public async ValueTask<IFolder[]> GetFoldersAsync(string bucketName, string path, CancellationToken cancellationToken = default)
         {
@@ -26,13 +26,13 @@ namespace MayoSolutions.Storage.Local
             if (cleanPath.Length > 0 && !cleanPath.EndsWith("/"))
                 cleanPath += "/";
             var fullPath = Path.Combine(_config.StoragePath, bucketName, path.SanitizeLocalPath());
-            
+
             if (Directory.Exists(fullPath))
                 return Directory.GetDirectories(fullPath)
                     .Select(child => new LocalStorageFolderWrapper(child, cleanPath + new DirectoryInfo(child).Name + "/"))
                     .Cast<IFolder>()
                     .ToArray();
-            
+
             throw new IOException($"Directory {cleanPath} not found.");
         }
 
@@ -40,11 +40,11 @@ namespace MayoSolutions.Storage.Local
         {
             var cleanPath = path.SanitizeSimulatedPath(); // TODO: Null check
             var fullPath = Path.Combine(_config.StoragePath, bucketName, path.SanitizeLocalPath());
-            
+
             if (File.Exists(fullPath))
                 return new LocalStorageFileWrapper(fullPath, cleanPath);
-            
-            throw new IOException("File {cleanPath} not found.");
+
+            throw new IOException($"File {cleanPath} not found.");
         }
 
         public async ValueTask<IFile[]> GetFilesAsync(string bucketName, string path, CancellationToken cancellationToken = default)
@@ -53,14 +53,26 @@ namespace MayoSolutions.Storage.Local
             if (cleanPath.Length > 0 && !cleanPath.EndsWith("/"))
                 cleanPath += "/";
             var fullPath = Path.Combine(_config.StoragePath, bucketName, path.SanitizeLocalPath());
-            
+
             if (Directory.Exists(fullPath))
                 return Directory.GetDirectories(fullPath)
                     .Select(child => new LocalStorageFileWrapper(child, cleanPath))
                     .Cast<IFile>()
                     .ToArray();
-            
+
             throw new IOException($"Directory {cleanPath} not found.");
+        }
+
+        public async Task DownloadObjectAsync(string bucketName, string path, Stream downloadInto,
+            CancellationToken cancellationToken = default)
+        {
+            var cleanPath = path.SanitizeSimulatedPath(); // TODO: Null check
+            var fullPath = Path.Combine(_config.StoragePath, bucketName, path.SanitizeLocalPath());
+            if (File.Exists(fullPath))
+                using (var fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
+                    await fs.CopyToAsync(downloadInto, 1024, cancellationToken);
+
+            throw new IOException("File {cleanPath} not found.");
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Amazon.S3.Model;
-
-namespace MayoSolutions.Storage.AWS.S3
+﻿namespace MayoSolutions.Storage.AWS.S3
 {
     internal class S3FolderShim : IFolder
     {
@@ -14,22 +12,6 @@ namespace MayoSolutions.Storage.AWS.S3
         {
             Path = path;
             Name = name;
-        }
-        public S3FolderShim(
-            string path,
-            S3Object folderObject
-        )
-        {
-            Path = path;
-            Name = folderObject.Key;
-        }
-        public S3FolderShim(
-            string path,
-            GetObjectResponse response
-        )
-        {
-            Path = path;
-            Name = response.Key;
         }
     }
 }

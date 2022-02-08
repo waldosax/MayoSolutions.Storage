@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -146,6 +147,21 @@ request_chunk:
                 .ToArray();
         }
 
+        public async Task DownloadObjectAsync(
+            string bucketName, string path,
+            Stream downloadInto,
+            CancellationToken cancellationToken = default)
+        {
+            EnsureStorageClient();
+
+            GetObjectRequest request = new GetObjectRequest
+            {
+                BucketName = bucketName,
+                Key = path
+            };
+            GetObjectResponse response = await _storageClient.GetObjectAsync(request, cancellationToken);
+            await response.ResponseStream.CopyToAsync(downloadInto);
+        }
 
 
 
